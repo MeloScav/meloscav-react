@@ -1,0 +1,71 @@
+html,
+body {
+  font-family: "Almarai", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  margin: 0;
+  padding: 0;
+
+  color: $black;
+}
+
+// Transition
+
+.remove-onload-transition {
+  transition: none !important;
+}
+
+.remove-transition-md {
+  @include media-breakpoint-down(lg) {
+    transition: none !important;
+  }
+}
+
+// Scroll bar
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: $light-primary;
+  border-left: 1px solid $darker-light-primary;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $primary;
+  border-radius: 6px;
+}
+
+// Selection
+::selection {
+  background: $primary;
+
+  color: $white;
+}
+
+::-moz-selection {
+  background: $primary;
+
+  color: $white;
+}
+
+.bg-primary,
+.invert-selection,
+.label-primary {
+  ::selection,
+  &::selection {
+    background: $white;
+
+    color: $primary;
+  }
+
+  ::-moz-selection,
+  &::-moz-selection {
+    background: $white;
+
+    color: $primary;
+  }
+}

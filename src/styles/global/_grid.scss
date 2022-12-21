@@ -1,0 +1,26 @@
+$grid-custom-gaps: (24, 32);
+.grid-gap {
+    gap: var(--grid-custom-gap);
+    row-gap: var(--grid-custom-gap);
+    column-gap: var(--grid-custom-gap);
+}
+
+@if (length($grid-custom-gaps) > 0) {
+    @each $grid-custom-gap in $grid-custom-gaps {
+        .gap-#{$grid-custom-gap} {
+            --grid-custom-gap: #{$grid-custom-gap + "px"};
+
+            @include media-breakpoint-down(lg) {
+                --grid-custom-gap: calc(#{$grid-custom-gap+ "px"} / 2);
+            }
+        }
+
+        %gap-#{$grid-custom-gap} {
+            --grid-custom-gap: #{$grid-custom-gap + "px"};
+            
+            @include media-breakpoint-down(lg) {
+                --grid-custom-gap: calc(#{$grid-custom-gap+ "px"} / 2);
+            }
+        }
+    }
+}

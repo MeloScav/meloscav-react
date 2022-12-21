@@ -1,0 +1,124 @@
+// BOOTSTRAP VARIABLES
+
+$primary: #ab2bc0;
+$secondary: #1e73e4;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+);
+
+$min-contrast-ratio: 2.5;
+
+$btn-transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out;
+
+// BUTTONS
+$btn-border-width: 2px;
+$btn-font-weight: 700;
+$btn-line-height: 1;
+$btn-padding-y: 15px;
+$btn-padding-x: 20px;
+$btn-border-radius: var(--common-border-radius);
+
+// TYPE
+$headings-font-family: "Merienda", cursive;
+$headings-font-weight: 700;
+$headings-line-height: 1.2;
+
+$h1-font-size: 64px;
+$h2-font-size: 48px;
+$h3-font-size: 32px;
+$h4-font-size: 24px;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1600px,
+);
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1520px,
+);
+
+// CUSTOM VARIABLES
+
+$light-primary: #f2dff6;
+$darker-light-primary: #d595df;
+$dark-primary: #3b0244;
+$light-secondary: #dce8fb;
+$darker-light-secondary: #8fb9f1;
+$dark-secondary: #083068;
+$black: #282229;
+$nav-link-active: #741d83;
+$white: #fffdff;
+$lighter-grey: #f3ecf4;
+$grey-100: #fcf9fd;
+$grey-200: #cbc3cc;
+$grey-300: #aea9af;
+$grey-400: #888089;
+
+$projects-colors: (
+    "beer-lovers": (
+        "yellow": #fcd673,
+        "blue": #01cee2,
+        "red": #ffb198,
+        "black": #171612,
+        "white": #fffdf6,
+    ),
+    "pomodoro": (
+        "dark-rose": #ac7b7d,
+        "dark-blue": #34435e,
+        "pure-white": #ffffff,
+    ),
+    "old-website": (
+        "blue": #1497d4,
+        "dark": #000000,
+    ),
+    "old-portfolio": (
+        "purple": #c74db2,
+        "dark-text": #141414,
+        "white": #f8f8f8,
+    ),
+    "aquarium-museum": (
+        "blue": #3d76e8,
+        "red": #e54141,
+        "yellow": #ffff00,
+        "black": #000000,
+        "light-blue": #61b2cb,
+        "light-blue-text": #2d899e,
+    ),
+    "animal-illustration": (
+        "brown": #552516,
+        "purple": #74165f,
+        "blue": #334867,
+    ),
+    "piscine": (
+        "primary": #1d8efb,
+        "secondary": #ed7118,
+        "title": #1161af,
+        "text": #0f171e,
+        "white": #fcfdff,
+    ),
+    "ristorante": (
+        "primary": #b31828,
+        "secondary": #221c1c,
+        "white": #fffbfb,
+    ),
+    "glasses-store": (
+        "primary": #af0000,
+        "secondary": #090808,
+        "text": #352020,
+        "white": #fffefe,
+    ),
+);
+
+// CONTAINER
+$container-full-max-width: 2010px;

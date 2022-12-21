@@ -1,0 +1,18 @@
+.icon {
+    width: var(--custom-icon-width);
+    max-width: 100%;
+    height: var(--custom-icon-height);
+
+    --custom-icon-width: 34px;
+    --custom-icon-height: 34px;
+
+    &-md {
+        --custom-icon-width: 40px;
+        --custom-icon-height: 40px;
+    }
+
+    &-lg {
+        --custom-icon-width: 60px;
+        --custom-icon-height: 60px;
+    }
+}
