@@ -1,0 +1,290 @@
+.header-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--main-nav-height);
+    z-index: 100;
+    box-shadow: none;
+
+    transition: all 0.35s ease-in-out;
+
+    .logo-container {
+        a {
+            display: block;
+
+            img {
+                width: 146px;
+                height: var(--main-nav-height);
+                padding: 16px 0 16px 0;
+
+                transition: all 0.35s ease-in-out;
+            }
+        }
+    }
+
+    .main-navbar {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @include media-breakpoint-up(lg) {
+            .btn {
+                margin-left: 16px;
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            right: 0;
+
+            overflow: hidden;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+
+            width: 75vw;
+            min-width: 250px;
+            max-width: 350px;
+
+            height: 100vh;
+            padding: var(--main-nav-height) 32px;
+
+            transition: all ease-in-out 0.35s;
+            transition-property: transform;
+            transform: translateX(120vw);
+
+            background-color: $white;
+
+            will-change: transform;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0;
+            padding: 0;
+
+            list-style: none;
+
+            @include media-breakpoint-down(lg) {
+                align-items: initial;
+                flex-direction: column;
+            }
+
+            li {
+                a {
+                    display: block;
+
+                    text-decoration: none;
+
+                    color: $black;
+
+                    @include media-breakpoint-down(lg) {
+                        display: block;
+                    }
+
+                    span {
+                        position: relative;
+
+                        display: block;
+
+                        margin: 0 6px;
+                        padding: 16px 10px;
+
+                        transition: color ease-in-out 0.35s;
+
+                        @include media-breakpoint-down(lg) {
+                            display: inline-block;
+
+                            padding-left: 0;
+                        }
+
+                        &::after {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+
+                            width: 0;
+                            height: 3px;
+
+                            content: "";
+                            transition: all ease-in-out 0.35s;
+                            transition-property: opacity, width;
+
+                            opacity: 0;
+                            background-color: $nav-link-active;
+
+                            @include media-breakpoint-down(lg) {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+
+                a:hover,
+                &.active a {
+                    span {
+                        color: $nav-link-active;
+
+                        &::after {
+                            width: 100%;
+
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        a.btn {
+            @include media-breakpoint-down(lg) {
+                margin-top: 16px;
+            }
+        }
+    }
+
+    .navbar-toggle-wrapper {
+        position: relative;
+
+        @include media-breakpoint-up(lg) {
+            display: none;
+            visibility: hidden;
+        }
+
+        @include media-breakpoint-down(lg) {
+            display: flex;
+            align-items: center;
+
+            &::after {
+                position: fixed;
+                z-index: 90;
+                top: 0;
+                left: 0;
+
+                visibility: hidden;
+
+                width: 0;
+                width: 100%;
+                height: 100vh;
+
+                content: "";
+
+                cursor: pointer;
+                transition: all ease-in-out 0.35s;
+                pointer-events: all;
+
+                opacity: 0;
+                background-color: $light-primary;
+            }
+        }
+    }
+
+    .hamburger {
+        position: relative;
+        z-index: 110;
+
+        display: flex;
+        flex-direction: column;
+
+        cursor: pointer;
+
+        gap: 6px;
+        row-gap: 6px;
+
+        .line {
+            width: 40px;
+            height: 3px;
+
+            transition: all ease-in-out 0.35s;
+
+            background-color: rgb(0 0 0 / 90%);
+
+            will-change: transform;
+        }
+
+        &:hover {
+            .line {
+                background-color: $primary;
+            }
+        }
+    }
+}
+
+.badge-wrapper {
+    position: relative;
+    @include media-breakpoint-down(lg) {
+        display: flex;
+        align-items: center;
+    }
+
+    .custom-badge {
+        @include media-breakpoint-up(lg) {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+    }
+}
+
+// Nav open
+body {
+    &.nav-open {
+        @include media-breakpoint-down(lg) {
+            overflow: hidden;
+
+            .header-nav {
+                z-index: 100;
+
+                .main-navbar {
+                    transform: translateX(0);
+
+                    opacity: 1;
+                }
+
+                .navbar-toggle-wrapper {
+                    &::after {
+                        visibility: visible;
+
+                        opacity: 0.8;
+                    }
+                }
+
+                .hamburger {
+                    .line {
+                        &:first-child {
+                            transform: rotate(45deg) translate(6px, 6px);
+                            transform-origin: bottom;
+                        }
+
+                        &:nth-child(2) {
+                            transform: rotate(-45deg);
+                            transform-origin: top;
+                        }
+
+                        &:nth-child(3) {
+                            transform: translateY(-9px) rotate(45deg);
+                            transform-origin: bottom;
+
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.nav-scrolled {
+        .header-nav {
+            --main-nav-height: 80px;
+            position: fixed;
+            background-color: $white !important;
+            box-shadow: 0px 2px 10px rgba($black, 0.15);
+        }
+    }
+}
