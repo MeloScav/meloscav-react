@@ -1,0 +1,13 @@
+.badge {
+    text-transform: uppercase;
+}
+
+.badge--absolute {
+    position: absolute;
+    pointer-events: none;
+}
+
+.badge--top-right {
+    top: 0;
+    right: 0;
+}
