@@ -1,17 +1,15 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import HomePage from "/src/pages/HomePage";
 import store from "/src/store";
+import RoutesComponent from "/src/components/routes/RoutesComponent";
 
-const App = (props) => {
+const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-        </Routes>
+        <RoutesComponent />
       </BrowserRouter>
     </Provider>
   );
