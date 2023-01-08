@@ -13,7 +13,7 @@
         a {
             display: block;
 
-            img {
+            svg {
                 width: 146px;
                 height: var(--main-nav-height);
                 padding: 16px 0 16px 0;
@@ -128,7 +128,7 @@
                 }
 
                 a:hover,
-                &.active a {
+                a.active {
                     span {
                         color: $nav-link-active;
 

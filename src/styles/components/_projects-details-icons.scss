@@ -1,0 +1,121 @@
+.project-details-icons {
+    position: relative;
+    overflow: hidden;
+    background-color: $light-primary;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 40%;
+        width: 100%;
+        background-color: $darker-light-primary;
+        z-index: 1;
+    }
+
+    &-content,
+    &-title {
+        position: relative;
+        z-index: 10;
+    }
+
+    &-content {
+        display: grid;
+        align-items: center;
+
+        gap: 20px;
+        row-gap: 20px;
+        column-gap: 20px;
+
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: repeat(12, 1fr);
+
+            gap: 40px;
+            row-gap: 40px;
+            column-gap: 40px;
+        }
+    }
+
+    &-wave {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: 2010px;
+        min-width: 100%;
+        height: auto;
+        user-select: none;
+        transform: translateX(-50%);
+        pointer-events: none;
+    }
+
+    .icons {
+        &-right {
+            .icons-text {
+                order: 2;
+                @include media-breakpoint-up(md) {
+                    order: 1;
+                    grid-column: 1/6;
+                }
+                @include media-breakpoint-up(xl) {
+                    grid-column: 1/5;
+                }
+            }
+
+            .icons-image {
+                order: 1;
+                @include media-breakpoint-up(md) {
+                    order: 2;
+                    grid-column: 6/13;
+                }
+            }
+        }
+
+        &-left {
+            .icons-text {
+                @include media-breakpoint-up(md) {
+                    grid-column: 7/13;
+                }
+                @include media-breakpoint-up(xl) {
+                    grid-column: 8/13;
+                }
+            }
+
+            .icons-image {
+                grid-row-start: 1;
+                @include media-breakpoint-up(md) {
+                    grid-column: 1/7;
+                }
+            }
+        }
+
+        &-text {
+            @include media-breakpoint-up(sm) {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            @include media-breakpoint-up(md) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        &-image {
+            display: grid;
+            justify-content: center;
+
+            img {
+                width: 100%;
+                max-width: 854px;
+                height: auto;
+
+                object-fit: cover;
+            }
+        }
+    }
+}

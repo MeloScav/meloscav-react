@@ -1,0 +1,195 @@
+.projects-wrapper {
+    position: relative;
+    padding-bottom: 0;
+
+    overflow: hidden;
+}
+
+.project-banner-waves-wrapper {
+    position: absolute;
+    pointer-events: none;
+
+    background-color: $light-primary;
+    z-index: -1;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 88%;
+}
+
+.project {
+    @include media-breakpoint-up(lg) {
+        display: grid;
+        align-items: center;
+
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    &-beer-lovers {
+        --project-theme-color: #01cee2;
+    }
+
+    &-family-icons {
+        --project-theme-color: #282229;
+    }
+
+    &-illu-car {
+        --project-theme-color: #9d673f;
+    }
+
+    &-pomodoro {
+        --project-theme-color: #ac7b7d;
+    }
+
+    &-old-website {
+        --project-theme-color: #1497d4;
+    }
+
+    &-old-site-portfolio {
+        --project-theme-color: #c74db2;
+    }
+
+    &-colorful-icons {
+        --project-theme-color: #ecd1ed;
+    }
+
+    &-pacifism {
+        --project-theme-color: #020645;
+    }
+
+    &-picto {
+        --project-theme-color: #ff3b2b;
+    }
+
+    &-covid {
+        --project-theme-color: #ac6968;
+    }
+
+    &-aquarium-museum {
+        --project-theme-color: #61b2cb;
+    }
+
+    &-animal-illustration {
+        --project-theme-color: #9f7162;
+    }
+
+    &-piscine {
+        --project-theme-color: #1d8efb;
+    }
+
+    &-ristorante-come-a-casa {
+        --project-theme-color: #b31828;
+    }
+
+    .box-image,
+    img,
+    &-info {
+        border-radius: var(--common-border-radius);
+    }
+
+    .box-image {
+        position: relative;
+
+        overflow: hidden;
+
+        padding: 58px 53px;
+
+        background-color: var(--project-theme-color);
+
+        @include media-breakpoint-down(sm) {
+            padding: 32px 24px;
+
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        img {
+            width: 100%;
+
+            object-fit: contain;
+        }
+    }
+
+    &-info {
+        position: relative;
+        z-index: 1;
+
+        max-width: 470px;
+
+        background-color: $white;
+
+        @include media-breakpoint-up(lg) {
+            padding: 64px;
+        }
+
+        @include media-breakpoint-down(lg) {
+            margin-top: -50px;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 48px;
+        }
+
+        @include media-breakpoint-down(sm) {
+            max-width: 100%;
+            margin-top: 0;
+            padding: 24px;
+
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    .box-image,
+    &-info {
+        @include media-breakpoint-up(lg) {
+            grid-row-start: 1;
+        }
+    }
+
+    &-left {
+        .box-image {
+            @include media-breakpoint-up(lg) {
+                grid-column: 1 / 7;
+            }
+        }
+
+        .project-info {
+            @include media-breakpoint-up(lg) {
+                grid-column: 6 / 13;
+            }
+        }
+    }
+
+    &-right {
+        .box-image {
+            @include media-breakpoint-up(lg) {
+                grid-column: 7 / 13;
+            }
+        }
+
+        .project-info {
+            @include media-breakpoint-up(lg) {
+                margin-left: auto;
+
+                grid-column: 1 / 8;
+            }
+        }
+    }
+
+    &-banner-wave {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+
+        width: $container-full-max-width;
+        min-width: 100%;
+        height: auto;
+
+        transform: translateX(-50%);
+
+        @include media-breakpoint-down(lg) {
+            width: calc($container-full-max-width / 2);
+        }
+    }
+}

@@ -1,0 +1,110 @@
+.project-details-colors {
+    position: relative;
+    overflow: hidden;
+    background-color: $light-secondary;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 40%;
+        width: 100%;
+        background-color: $darker-light-secondary;
+        z-index: 1;
+    }
+
+    &-content,
+    &-title {
+        position: relative;
+        z-index: 10;
+    }
+
+    &-content {
+        display: grid;
+        align-items: center;
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+        }
+    }
+
+    &-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+
+        @include media-breakpoint-up(lg) {
+            grid-column: 6/13;
+        }
+    }
+
+    .colors-wrapper {
+        display: grid;
+
+        @include media-breakpoint-up(lg) {
+            grid-column: 1/6;
+        }
+
+        .color {
+            display: flex;
+            align-items: center;
+
+            @if (length($projects-colors) > 0) {
+                @each $project-name, $project-colors in $projects-colors {
+                    @if (length($project-colors) > 0) {
+                        @each $color-name, $color-value in $project-colors {
+                            .#{$project-name}-#{$color-name} {
+                                background-color: $color-value;
+                                p {
+                                    color: color-contrast($color-value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-block {
+                margin-right: 40px;
+
+                min-width: 88px;
+
+                border: 1px solid $black;
+                border-radius: var(--common-border-radius);
+
+                p {
+                    margin: 0;
+                    padding: 47px 8px;
+
+                    text-align: center;
+                }
+            }
+
+            &-text {
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    &-wave {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+
+        width: $container-full-max-width;
+        min-width: 100%;
+        height: auto;
+
+        user-select: none;
+        transform: translateX(-50%);
+        pointer-events: none;
+
+        @include media-breakpoint-down(lg) {
+            width: calc($container-full-max-width / 2);
+        }
+    }
+}

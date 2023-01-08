@@ -1,0 +1,192 @@
+.splide {
+    padding-left: 8.56%;
+    padding-right: 8.56%;
+    overflow: hidden;
+
+    &__track--wrapper {
+        overflow: hidden;
+        padding: 10px;
+        margin: -10px;
+    }
+
+    &__track {
+        overflow: initial;
+    }
+
+    &__list {
+        margin: 0 -3.725% !important;
+    }
+
+    &__arrows {
+        pointer-events: none;
+        position: absolute;
+
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        z-index: 10;
+    }
+
+    &__arrow {
+        padding: 0;
+        border: 0;
+        pointer-events: all;
+        background-color: transparent;
+        z-index: 1;
+        transition: all 0.35s ease-in-out;
+
+        &:hover {
+            svg {
+                fill: $primary;
+            }
+        }
+
+        svg {
+            width: 31px;
+            height: 44px;
+            color: $primary;
+            fill: transparent;
+            transition: all 0.35s ease-in-out;
+        }
+
+        &.splide__arrow--prev {
+            transform: scaleX(-1);
+        }
+    }
+
+    &__pagination {
+        padding: 0;
+        margin-top: 80px;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+        }
+
+        &__page {
+            margin: 16px;
+
+            border: 0;
+            background-color: rgba($grey-400, 0.5);
+
+            transition: all 0.35s ease-in-out;
+            width: 24px;
+            height: 8px;
+            border-radius: var(--common-border-radius);
+
+            &.is-active {
+                width: 17px;
+                height: 17px;
+
+                border-radius: 50%;
+                background-color: $primary;
+            }
+        }
+    }
+}
+
+.project-card-wrapper {
+    // height: 400px;
+    height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include media-breakpoint-down(lg) {
+        height: 400px;
+    }
+
+    &.is-active {
+        .project-card {
+            @include media-breakpoint-up(lg) {
+                height: 100%;
+                transform: none;
+
+                box-shadow: 0px 5px 10px $grey-300;
+            }
+        }
+    }
+
+    &.is-active,
+    .project-card:hover {
+        .project-card-link {
+            span {
+                transform: none;
+            }
+        }
+    }
+
+    .project-card {
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        height: 100%;
+        transition: all 0.35s ease-in-out;
+        border-radius: var(--common-border-radius);
+        box-shadow: 0px 5px 10px rgba($grey-300, 0.5);
+        overflow: hidden;
+
+        @include media-breakpoint-down(lg) {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            // height: 344px;
+            height: 280px;
+            transform: scale(0.776);
+            will-change: transform;
+        }
+
+        &-img {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            z-index: -1;
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            object-fit: cover;
+            user-select: none;
+        }
+
+        &-link {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+
+            span {
+                will-change: transform;
+                position: relative;
+                padding: 42px 12px;
+                display: block;
+                color: $black;
+                text-transform: uppercase;
+                font-weight: 700;
+
+                transition: all 0.35s ease-in-out;
+
+                transform: translateY(150%);
+
+                &::before {
+                    z-index: -1;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    height: 100%;
+                    width: 110%;
+                    border-radius: 50%;
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                    background-color: $light-primary;
+                }
+            }
+        }
+    }
+}

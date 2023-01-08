@@ -1,0 +1,121 @@
+.cards-container {
+    display: grid;
+    align-items: center;
+
+    --project-icons-height: 200px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    row-gap: 40px;
+    column-gap: 40px;
+
+    @include media-breakpoint-down(lg) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include media-breakpoint-down(sm) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        row-gap: 24px;
+    }
+
+    .card {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &-design {
+            @include media-breakpoint-down(lg) {
+                grid-column: 1 / 3;
+            }
+
+            @include media-breakpoint-down(sm) {
+                grid-column: initial;
+            }
+        }
+
+        &-devlpment {
+            @include media-breakpoint-down(lg) {
+                grid-column: 3 / 5;
+            }
+
+            @include media-breakpoint-down(sm) {
+                grid-column: initial;
+            }
+        }
+
+        &-illu {
+            @include media-breakpoint-down(lg) {
+                grid-column: 2 / 4;
+            }
+
+            @include media-breakpoint-down(sm) {
+                grid-column: initial;
+            }
+        }
+
+        &:hover::before {
+            background-color: $light-primary;
+        }
+
+        &::before {
+            position: absolute;
+            z-index: 0;
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: calc(100% - 78px);
+
+            content: "";
+
+            border-radius: 50% 50% 6% 6% / 100% 100% 6% 6%;
+            background-color: $light-secondary;
+
+            transition: background-color 0.35s ease-in-out;
+        }
+
+        &-thumb,
+        &-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        &-thumb {
+            svg {
+                width: 100%;
+                height: var(--project-icons-height);
+
+                @media (max-width: 1440px) {
+                    --project-icons-height: 170px;
+                }
+
+                @media (max-width: 1200px) {
+                    --project-icons-height: 130px;
+                }
+
+                @media (max-width: 768px) {
+                    --project-icons-height: 115px;
+                }
+
+                @media (max-width: 575px) {
+                    --project-icons-height: 165px;
+                }
+            }
+        }
+
+        &-content {
+            margin-top: 56px;
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 40px;
+            }
+
+            p {
+                margin-bottom: 16px;
+            }
+        }
+    }
+}

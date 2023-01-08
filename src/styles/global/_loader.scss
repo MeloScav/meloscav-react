@@ -1,4 +1,60 @@
-.init-loader {
+// .init-loader {
+//     position: fixed;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+
+//     height: 100vh;
+//     width: 100vw;
+//     padding: 32px;
+
+//     top: 0;
+//     left: 0;
+
+//     background-color: $light-secondary;
+//     z-index: 10000;
+//     visibility: hidden;
+//     opacity: 0;
+//     transition: all 0.35s ease-in-out;
+
+//     svg {
+//         width: 40%;
+
+//         path {
+//             transition: fill 0.35s ease-in-out;
+//             transition-delay: 1800ms;
+//             fill: transparent;
+//             animation-duration: var(--loading-animation-duration);
+//             animation-timing-function: ease-in-out;
+//             animation-delay: 0s;
+//             animation-fill-mode: forwards;
+//         }
+
+//         .logo-path {
+//             &-1 {
+//                 stroke-dasharray: 54 56;
+//                 stroke-dashoffset: 55;
+//             }
+
+//             &-2 {
+//                 stroke-dasharray: 220 222;
+//                 stroke-dashoffset: 221;
+//             }
+
+//             &-3 {
+//                 stroke-dasharray: 220 222;
+//                 stroke-dashoffset: 221;
+//             }
+
+//             &-4 {
+//                 stroke-dasharray: 448 450;
+//                 stroke-dashoffset: 449;
+//             }
+//         }
+//     }
+// }
+
+.loader {
     position: fixed;
     display: flex;
     align-items: center;
@@ -15,66 +71,95 @@
     z-index: 10000;
     visibility: hidden;
     opacity: 0;
-    transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out !important;
 
     svg {
         width: 40%;
+    }
+}
 
+.loader:not(.loader--init) {
+    svg {
+        path {
+            fill: $primary;
+        }
+
+        .logo-path-4 {
+            fill: $secondary;
+        }
+    }
+}
+
+.loader--init {
+    svg {
         path {
             transition: fill 0.35s ease-in-out;
-            transition-delay: 1800ms;
-            fill: transparent;
+            transition-delay: calc(var(--loading-animation-duration) - 0.2s);
+            fill: transparent !important;
             animation-duration: var(--loading-animation-duration);
             animation-timing-function: ease-in-out;
             animation-delay: 0s;
             animation-fill-mode: forwards;
         }
+    }
 
-        .logo-path {
-            &-1 {
-                stroke-dasharray: 54 56;
-                stroke-dashoffset: 55;
-            }
+    .logo-path {
+        &-1 {
+            stroke-dasharray: 54 56;
+            stroke-dashoffset: 55;
+        }
 
-            &-2 {
-                stroke-dasharray: 220 222;
-                stroke-dashoffset: 221;
-            }
+        &-2 {
+            stroke-dasharray: 220 222;
+            stroke-dashoffset: 221;
+        }
 
-            &-3 {
-                stroke-dasharray: 220 222;
-                stroke-dashoffset: 221;
-            }
+        &-3 {
+            stroke-dasharray: 220 222;
+            stroke-dashoffset: 221;
+        }
 
-            &-4 {
-                stroke-dasharray: 448 450;
-                stroke-dashoffset: 449;
-            }
+        &-4 {
+            stroke-dasharray: 448 450;
+            stroke-dashoffset: 449;
         }
     }
 }
 
 body {
-    &.loading {
+    &.loading,
+    &.init-loading,
+    &.init-loading-pending {
         overflow: hidden;
 
-        > * {
-            opacity: 0;
+        #root > * {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        #root > .loader {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    }
+
+    &.init-loading-pending {
+        &,
+        * {
+            transition: none !important;
         }
     }
 
     &.init-loading {
-        .init-loader {
-            opacity: 1 !important;
-            visibility: visible;
-
-            path {
-                animation-name: logo-path-draw;
-                fill: $primary;
-            }
-
-            .logo-path-4 {
-                fill: $secondary;
+        .loader {
+            svg {
+                path {
+                    animation-name: logo-path-draw;
+                    fill: $primary !important;
+                }
+                .logo-path-4 {
+                    fill: $secondary !important;
+                }
             }
         }
     }

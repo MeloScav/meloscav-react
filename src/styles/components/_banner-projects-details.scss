@@ -1,0 +1,84 @@
+.project-details {
+    &-banner {
+        position: relative;
+        min-height: 100vh;
+
+        @media (min-width: $container-full-max-width) {
+            min-height: 1080px;
+        }
+
+        overflow: hidden;
+
+        &-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: auto;
+            user-select: none;
+            pointer-events: none;
+
+            @include media-breakpoint-down(lg) {
+                width: 1350px;
+                min-width: 100%;
+            }
+            @include media-breakpoint-down(md) {
+                width: 1000px;
+                min-width: 100%;
+            }
+            @include media-breakpoint-down(sm) {
+                width: 565px;
+                min-width: 100%;
+            }
+        }
+
+        &-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            height: 100%;
+            width: 100%;
+
+            z-index: -2;
+
+            object-fit: cover;
+            object-position: 50% 47%;
+            @include media-breakpoint-down(md) {
+                object-position: 45% 50%;
+            }
+        }
+    }
+
+    &-breadcrumb {
+        margin-top: 48px;
+        margin-bottom: 8px;
+        a {
+            text-decoration: none;
+        }
+    }
+
+    &-title {
+        position: relative;
+        display: inline-block;
+
+        padding: 17px 88px 17px 0;
+        margin: 0;
+
+        &::before {
+            content: "";
+            width: 100vw;
+            height: 100%;
+
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            background-color: $darker-light-secondary;
+            border-radius: var(--common-border-radius);
+
+            z-index: -1;
+        }
+    }
+}

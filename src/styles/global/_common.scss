@@ -13,11 +13,14 @@ body {
 
 // Transition
 
-.remove-onload-transition {
-  transition: none !important;
+.remove-transition {
+  &,
+  * {
+    transition: none !important;
+  }
 }
 
-.remove-transition-md {
+.remove-transition-lg {
   @include media-breakpoint-down(lg) {
     transition: none !important;
   }

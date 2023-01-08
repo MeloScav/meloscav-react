@@ -53,6 +53,16 @@
     }
 }
 
+.text-stack {
+    > * + * {
+        margin-top: 56px;
+
+        @include media-breakpoint-down(lg) {
+            margin-top: 28px;
+        }
+    }
+}
+
 .pt-main-nav-height {
     padding-top: var(--main-nav-height);
 }
